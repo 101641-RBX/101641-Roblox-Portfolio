@@ -8,7 +8,7 @@ Below you can find a quick rundown of what I have experience in coding:
 - Programming tools, weapons, objects
 - Programming NPC pathfinding and behavior
 - Programming GUI's
-- Programming Basic Gameplay (Teams, spawning, etc,)
+- Programming General Gameplay (Teams, spawning, etc,)
 
 I also have done a light amount of work in the following fields, mostly for placeholder purposes for my code:
 - Create interactive GUI's
