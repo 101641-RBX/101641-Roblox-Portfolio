@@ -12,7 +12,11 @@ This script generates parts called "Nodes" that will be placed at fixed interval
 
 
 ## Video Demonstration
---Video--
+
+https://github.com/user-attachments/assets/0b060d7c-e629-4db0-96a4-0492c318122b
+
+*Video Example of the node spawning and how it can be used for any shape and rotation. Note that having multiple of these run at once will increase script activity, but the script will terminate itself once completed. This is ok as this script is suppose to run upon server startup where everything is loading in*
+
 
 ## Code Snippets and Explanation
 
