@@ -6,7 +6,7 @@ Developing on Roblox since December 2022. I have been on Roblox since 2009 and h
 # Experience Rundown
 Below you can find a quick rundown of what I have experience in coding:
 - Programming tools, weapons, objects
-- Programming AI/NPC pathfinding and behavior
+- Programming NPC pathfinding and behavior
 - Programming GUI's
 - Programming Basic Gameplay (Teams, spawning, etc,)
 
