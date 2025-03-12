@@ -1,10 +1,16 @@
-# Automatic Node Generator
+# Scripting Overview
 
-This is a script that automatically generates nodes horizontally along a part. These nodes are used for NPC's to move to them.
+## Description
+This script generates parts called "Nodes" that will be placed at fixed intervals on top of the main part. To prevent endless generation of the nodes, cutoffs are generated at the corners and front/back of the main part, which when reached will force the script to start generating further down the main part. This works for all part sizes, as well as all rotation.
 
-The reason I decided to use nodes is due to the diversification of pathfinding, as it forces AI to move to pre-set areas, instead of all of them following a single path that regular pathfinding would generate.
+## Why Use Nodes?
 
-The AI does pathfind to these nodes, which means they will move around obstacles to reach it.
+
+## Video Demonstration
+--Video--
+
+## Code Snippets and Explanation
+
 
 
 
