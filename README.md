@@ -25,4 +25,4 @@ Here are social links if you need to get in contact with me:
 
 # Notice
 
-Keep in mind I do have a IRL job and college, so while I can still complete stuff in a resonable time, delays can occur.
+Keep in mind I do have a IRL job and college, so while I can still complete stuff in a reasonable time, delays can occur.
