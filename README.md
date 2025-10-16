@@ -9,12 +9,14 @@ Below you can find a quick rundown of what I have experience in coding:
 - Programming interactive GUI's
 - Organizing and Optimizing code via module scripts
 
-I also have done a light amount of work in the following fields, mostly for placeholder purposes for my code:
+I also have done a light amount of work in the following fields:
 - Create interactive GUI's
 - Animate R15 & R6 rigs
+- Create & code data stores, including a credit system.
+- Create & code custom chat systems
 
-# Side Experiences
-- Python
+# Past Jobs:
+- Developer for Ashen Crusade by WealthyEthereal (April 2025 - July 2025). Completed tasks such as creating a shop system, credit system, general bug fixes. Left due to final semester of school requiring all my attention.
   
 # Handles For Contact
 Here are social links if you need to get in contact with me:
