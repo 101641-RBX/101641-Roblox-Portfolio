@@ -7,7 +7,7 @@ Below you can find a quick rundown of what I have experience in coding:
 - Programming tools, weapons, objects
 - Programming NPC pathfinding and behavior (Highest Focus)
 - Programming interactive GUI's
-- Organizing and Optimizing code via module scripts
+- High focus on Organization and Optimization in code
 
 I also have done a light amount of work in the following fields:
 - Create interactive GUI's
