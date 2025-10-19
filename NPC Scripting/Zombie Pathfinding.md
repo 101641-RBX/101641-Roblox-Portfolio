@@ -16,7 +16,11 @@ https://github.com/user-attachments/assets/47df111b-a2f5-41de-9e3e-43f03decc0e1
 ### NPC Horde
 
 
-https://github.com/user-attachments/assets/b2b534d3-434f-4bb7-9f8b-78112dc22d8d
+
+https://github.com/user-attachments/assets/11cba2a6-7e00-4fc8-a00f-251dd3c384ae
+
+
+
 
 
 *Video shows the script performance when 250 NPCS are active. Also wanted to show how this is including the NPC having a targetting system with line of sight raycasting, as well as random node generation for slight offsetting, as well as physics to make the NPC face the target.*
@@ -25,7 +29,7 @@ https://github.com/user-attachments/assets/b2b534d3-434f-4bb7-9f8b-78112dc22d8d
 ```
 coroutine.wrap(function() 
 			local lastAttack =  workspace:GetServerTimeNow()
-			while task.wait(.08) do --works fine when stopped
+			while task.wait(.08) do 
 				if HRP and Tgt then
 					MovementState()
 					if workspace:GetServerTimeNow() - lastAttack >= .7 then 
@@ -50,34 +54,44 @@ coroutine.wrap(function()
 
 
 ```
-while stop == false do
-				local nodeCopy = node:Clone()
-				nodeCopy.BrickColor = BrickColor.new("Black")
-				nodeCopy.Rotation = Part.Rotation
-				nodeCopy.Parent = workspace.Nodes
-				nodeCopy.CanCollide = true
-				nodeCopy.CanTouch = true
-				nodeCopy.Position = sideType
-
-				nodeCopy.CFrame =  nodeCopy1.CFrame * CFrame.new(0,0,CframeDown)
-				CframeDown +=8
-
-				if (nodeCopy.Position - corners.BackLeftCorner).Magnitude <=10 then
-					LeftReached = true
-				end
-				local partsInRegion = workspace:GetPartBoundsInBox(CFrame.new(nodeCopy.Position), nodeCopy.Size, overlapParams)
-				for _, cut in pairs(partsInRegion) do
-					if cut.Name == "CUTOFF" then
-						stop = true
-						nodeCopy:Destroy()
-						break
+	local function findNode() 
+		if Tgt then
+			local botPos = HRP.Position
+			local tgtPos = Tgt.Position
+			local tries = 0
+			local distance = math.random(8, 10)/10
+			repeat
+				if Tgt then
+				local function RNG()
+					if math.random() < 0.5 then
+						return math.random(-15, -5)
+					else
+						return math.random(5, 15)
 					end
 				end
+
+				local offsetX = RNG()
+				local offsetZ = RNG()
+					local basePoint = botPos:Lerp(tgtPos, distance)
+				node = basePoint + Vector3.new(offsetX, 0, offsetZ)
+				local rayDirection = (Tgt.Parent.Torso.Position - bot.Torso.Position)
+				local raycastResult = workspace:Raycast(bot.Torso.Position , rayDirection, raycastParams)
+					if (HRP.Position - Tgt.Position).Magnitude <= 40 and  raycastResult 
+					and raycastResult.Instance:IsDescendantOf(Tgt.Parent) then 
+					return tgtPos + Tgt.Velocity
+					elseif (HRP.Position - Tgt.Position).Magnitude > 40 then
+					return node
+				else
+					tries +=1
+				end
+				end
 				task.wait()
-			end
+			until tries >= 3
+
+			return tgtPos
+		end
+	end
 ```
-- This is a portion of one function that handles creating and placing the node
-- "Stop" is kept false until the node generation reaches the back of the part (cutoff)
-- The CframeDown is the increment that the part moves across (left to right), can be modified if you want shorter
-- "LeftReached = true" is ran when the node hits the backright corner, which is the last spot the node is suppose to touch, which will stop the script from running.
-- The partsInRegion is ran after the node generates to see if it is inside the cutoff part. If it is, then the script stops and node generation of the part is complete.
+- This is the destination/node generator that will generate the end point for the pathfinding. The first main decision is whether to just target the player and adjust to his future position, or generate a node if not close enough.
+- The node is generated using offsets as well as a random distance, this distance determines how close the point will land to the bot, with 1 being directly on the bot. I do not do higher than 1 as that will cause the bots to overshoot the target and cause pathfinding issues.
+- TLDR of this logic is: If the bot can see the player and is <= 40 studs, just chase the player and predict his future movement, else if the bot is further than 40 studs, create a random node near the player to mimic a small strafing pattern. If all else fails, just go straight to the bot.
