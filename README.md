@@ -4,10 +4,10 @@ Developing on Roblox since December 2022. I have been on Roblox since 2009 and h
 
 # Experience Rundown
 Below you can find a quick rundown of what I have experience in coding:
-- Programming tools, weapons, objects
-- Programming NPC pathfinding and behavior (Highest Focus)
+- General Gameplay: Programming tools, weapons, objects
+- Programming NPC pathfinding and behavior
 - Programming interactive GUI's
-- High focus on Organization and Optimization in code
+- Strong organizational skills through use of multiple modular scripts
 
 I also have done a light amount of work in the following fields:
 - Create interactive GUI's
