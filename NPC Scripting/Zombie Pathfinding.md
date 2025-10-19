@@ -23,27 +23,30 @@ https://github.com/user-attachments/assets/b2b534d3-434f-4bb7-9f8b-78112dc22d8d
 
 ## Code Snippets and Explanation
 ```
-local resetYAxis = Vector3.new(1,0,1)
-	local Topside = Vector3.new(0,Part.Position.Y + (Part.Size.Y / 2))
-
-	
-	local sides = {
-		front = Part.CFrame.LookVector * ((Part.Size.Z / 2)+sidesOffset) +Part.Position * resetYAxis + Topside,
-		back = -Part.CFrame.LookVector * ((Part.Size.Z / 2)+sidesOffset) +Part.Position* resetYAxis + Topside,
-		right = Part.CFrame.RightVector * ((Part.Size.X/2)+sidesOffset) + Part.Position* resetYAxis + Topside,
-		left = -Part.CFrame.RightVector * ((Part.Size.X/2)+4) + Part.Position * resetYAxis + Topside,
-
-	}
-
-	local corners = {
-		FrontLeftCorner = (sides.left + sides.front - Part.Position)  ,
-		FrontRightCorner = (sides.right + sides.front - Part.Position)   ,
-		BackLeftCorner = (sides.left + sides.back - Part.Position) ,
-		BackRightCorner = (sides.right + sides.back - Part.Position)  ,
-	}
+coroutine.wrap(function() 
+			local lastAttack =  workspace:GetServerTimeNow()
+			while task.wait(.08) do --works fine when stopped
+				if HRP and Tgt then
+					MovementState()
+					if workspace:GetServerTimeNow() - lastAttack >= .7 then 
+					task.spawn(Attack)
+						lastAttack = workspace:GetServerTimeNow()
+					end
+					local state = Humanoid:GetState()
+					if state ~= Enum.HumanoidStateType.Jumping and state ~= Enum.HumanoidStateType.Freefall 
+						and Humanoid.FloorMaterial ~= Enum.Material.Air then
+						update()
+					else
+						Humanoid:MoveTo(Tgt.Position)
+					end
+				end
+				end
+		end)()
 ```
-- Gets the corners and sides of the part, which will help indicate when the node should stop generating
-- The topside ensures that the nodes are placed on top of the part. The (*resetYAxis + Topside) ensures that the nodes are placed on the surface and not on a fixed y-axis, allowing for the nodes to adjust to rotation
+- This is the main while loop, and the only while loop in the entire pathfinding script. This is also the only wrap coroutine which gets closed & created on a constant interval.
+- The reason I have the Humanoid:GetState() checks is to ensure the NPC doesn't repath while jumping, which can cause the NPC to freeze mid jump and backtrack.
+- The Humanoid:MoveTo(Tgt.Position) is there to ensure momentum is applied when the bot is jumping, that way the bot isn't jumping in place. This MoveTo is not using computeasync().
+
 
 
 ```
