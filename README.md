@@ -32,7 +32,4 @@ Developing on Roblox since December 2022. I have been on Roblox since 2009 and h
 Here are social links if you need to get in contact with me:
 - Roblox Profile: https://www.roblox.com/users/5621075/profile
 - Discord: 101641
-
-# Notice
-
-Keep in mind I do have a IRL job and college, so while I can still complete stuff in a reasonable time, delays can occur.
+- Email: scp00347@gmail.com
