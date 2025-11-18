@@ -13,7 +13,7 @@ Developing on Roblox since December 2022. I have been on Roblox since 2009 and h
 - Create & modify custom chat systems
 
 ### Tools I use:
-- Git, Github, Rojo, Visual Studio Code
+- Git, Github, Rojo, Visual Studio Code, Roblox Studio
 
 ### Other skills I have:
 - Python
