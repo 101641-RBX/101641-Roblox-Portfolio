@@ -21,6 +21,7 @@ Developing on Roblox since December 2022. I have been on Roblox since 2009 and h
 - HTML/CSS
 
 
+
 # Past Jobs
 ### Developer — Ashen Crusade (Roblox), WealthyEthereal April 2025 – July 2025
 - Designed and implemented core gameplay systems including shop, data store, and credit management
